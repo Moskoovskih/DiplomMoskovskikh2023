@@ -1,0 +1,123 @@
+﻿<Page x:Class="DiplomMoskovskikh2023.teacher.Rezylt"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DiplomMoskovskikh2023.teacher"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Rezylt">
+
+    <Grid>
+
+            <Image Source="/resources/меню учителя.jpg" Margin="-74,-24,-78,-69.4"   />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="75 15 0 0">
+             
+                
+                
+                <StackPanel Orientation="Vertical" Margin="5 0 5 0"  >
+                    <Button x:Name="Pechat"    Background="#FFCA9E5D" Click="Pechat_Click"    >
+                        <StackPanel Orientation="Horizontal" >
+                            <Image Source="/resources/Печать.png" Width="65" Height="58"/>
+                            <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="Печать " HorizontalAlignment="Center"  FontSize="15"  Foreground="Black" FontWeight="Bold"   />
+                            </StackPanel>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="5 0 5 0"  >
+            <Button x:Name="Excel"    Background="#FFCA9E5D"  Click="Excel_Click"  >
+                <StackPanel Orientation="Horizontal" Height="54" Width="96" >
+                        <Image Source="/resources/excel.png" Width="49" Height="47"/>
+                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Отчет " HorizontalAlignment="Center"  FontSize="15"  Foreground="Black" FontWeight="Bold"   />
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Margin="5 0 5 0"  >
+                    <Button x:Name="Nazad"    Background="#FFCA9E5D" Click="Nazad_Click"    >
+                        <StackPanel Orientation="Horizontal" Height="54" Width="96" >
+                            <Image Source="/resources/Назад1.png" Width="49" Height="47"/>
+                            <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="Назад " HorizontalAlignment="Center"  FontSize="15"  Foreground="Black" FontWeight="Bold"   />
+                            </StackPanel>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
+            </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 34 0 0" >
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Left"   Background="#FF8C4F91" Height="304" Width="162" >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Введите ФИО" FontSize="15" Margin="32,4,9.8,4"  Foreground="Black" FontWeight="Bold"/>
+                    <TextBox x:Name="nameStudent" Width="150" Height="20" Margin="4"  Background="#FFCA9E5D"  TextChanged="nameStudent_TextChanged"   />
+                    <TextBlock Text=" Выберите тест" FontSize="15" Margin="32,4,9.6,4" Foreground="Black" FontWeight="Bold"/>
+                    <ComboBox x:Name="CMB_test" Width="150" Height="20" Margin="4"  Background="#FFCA9E5D"  Foreground="#FF998099" SelectionChanged="CMB_test_SelectionChanged" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="ttb2" Text=" Количество данных: " FontSize="14" FontWeight="Bold"  Foreground="Black" Height="20"/>
+                        <TextBlock x:Name="ttb1" FontSize="14"  Foreground="Black" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="ttb4" Text=" из " FontWeight="Bold" FontSize="14" Foreground="Black"/>
+                        <TextBlock x:Name="ttb3" FontSize="14" Foreground="Black" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+
+                    <Button x:Name="btn1" Margin="24,13,9.6,3" Content="По умолчанию"  FontSize="15" FontWeight="Bold" Foreground="Black" Background="#FFCA9E5D" Height="20" Click="btn1_Click"  />
+                   
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Margin="161,10,0,-20.4" >
+
+            <DataGrid x:Name="rez"  Background="#FFCA9E5D"  Margin="0 65 0 0"
+                  AutoGenerateColumns="False"
+                  
+                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible"  Height="330" BorderBrush="#FF3D2126"   >
+                <DataGrid.Columns>
+                    <DataGridTextColumn 
+                    Binding="{Binding User.Name}"
+                    Width="*"
+                    Header="ФИО" />
+                    <DataGridTextColumn
+                    Binding="{Binding Виды_Контроля.Наименование}"
+                    Width="*"
+                    Header="Название теста"/>
+                <DataGridTextColumn
+                    Binding="{Binding КоличествоНеверных}"
+                    Width="*"
+                    Header="Количество Ошибок"/>
+                <DataGridTextColumn
+                    Binding="{Binding КоличествоВсехВопросов}"
+                    Width="*"
+                    Header="Количество заданий"/>
+                <DataGridTextColumn
+                    Binding="{Binding Дата}"
+                    Width="*"
+                    Header="Дата"/>
+                <DataGridTemplateColumn
+                Width="*">
+
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                            x:Name="Redrez" Click="Redrez_Click" >
+
+                                <Image Source="/resources/Редактирование.png" Height="50"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

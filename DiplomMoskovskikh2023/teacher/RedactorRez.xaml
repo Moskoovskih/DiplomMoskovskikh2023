@@ -1,0 +1,47 @@
+﻿<Page x:Class="DiplomMoskovskikh2023.teacher.RedactorRez"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DiplomMoskovskikh2023.teacher"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="">
+
+    <Grid>
+        <Image Source="/resources/меню учителя.jpg" Margin="-74,-24,-78,-69.4"   />
+        <Border CornerRadius="30" Background="#FF8C4F91" HorizontalAlignment="Center" >
+            <StackPanel >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Ученик:" Width="215" Foreground="White" Margin="10" FontSize="17"/>
+                    <ComboBox x:Name="Studet" Text="{Binding User.Name}" Width="300" Margin="10" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Тестирование:" Width="215" Foreground="White" Margin="10" FontSize="17"/>
+                    <ComboBox x:Name="Tests" Text="{Binding Виды_Контроля.Наименование}" Width="300" Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Количество не верных" Width="215" Foreground="White" Margin="10" FontSize="17"/>
+                    <TextBox x:Name="FIO" Text="{Binding КоличествоНеверных}" TextWrapping="Wrap" Width="300" Margin="10" Height="29"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Количество заданий" Foreground="White" Width="215" Margin="10" FontSize="17"/>
+                    <TextBox x:Name="Namber_student" Text="{Binding КоличествоВсехВопросов}" Width="300" Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Дата" Foreground="White" Width="215" Margin="10" FontSize="17"/>
+                    <TextBox x:Name="Date" Width="300" Text="{Binding Дата}" Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border CornerRadius="30" Background="#FFCA9E5D">
+                        <Button x:Name="btn1" Content="Обновить" Background="#FFCA9E5D" HorizontalAlignment="Center" Margin="10" FontSize="19"  Foreground="White" Width="132"  Click="btn1_Click"/>
+                    </Border>
+                    <Border CornerRadius="30" Background="#FFCA9E5D">
+                        <Button x:Name="btn2" Content="Назад" Background="#FFCA9E5D" HorizontalAlignment="Center" Margin="10" FontSize="19"  Foreground="White" Width="132"  Click="btn2_Click"/>
+                    </Border>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

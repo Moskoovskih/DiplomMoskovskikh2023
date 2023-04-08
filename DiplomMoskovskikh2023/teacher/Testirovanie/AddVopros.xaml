@@ -1,0 +1,40 @@
+﻿<Page x:Class="DiplomMoskovskikh2023.teacher.Testirovanie.AddVopros"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DiplomMoskovskikh2023.teacher.Testirovanie"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="">
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock Text="Вопрос" Margin="10" FontSize="17" Width="137" />
+            <ComboBox x:Name="cmb1" IsEditable="True" Width="323" Margin="10" Text="{Binding Темы_тестов.Наименование}"/>
+            <Button Width="30" Height="30"  x:Name ="btn3" BorderBrush="Transparent" Click="btn3_Click" >
+                <Image Source="/resources/плюс.png"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="498"   >
+            <TextBlock Text="Ответ"  Margin="10" FontSize="17" Width="134"/>
+            <TextBox x:Name="txtbx" TextWrapping="Wrap" Width="323" Margin="10"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock Text="Вариант ответа"  Margin="10" FontSize="17" Width="134" />
+            <ComboBox x:Name="cmb3"  Width="323" Margin="10" Text="{Binding Правильные_неправильные_ответы.Наименование}"/>
+
+        </StackPanel>
+
+
+
+
+
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btn1" Content="Добавить" HorizontalAlignment="Center" Margin="10" FontSize="19"  Foreground="Black" Width="132"  Background="#FFF3D39D" Click="btn1_Click"/>
+            <Button x:Name="btn2" Content="Назад" HorizontalAlignment="Center" Margin="10" FontSize="19"  Foreground="Black" Width="132" Background="#FFF3D39D" Click="btn2_Click"/>
+
+        </StackPanel>
+    </StackPanel>
+</Page>

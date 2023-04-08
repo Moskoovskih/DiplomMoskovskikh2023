@@ -1,0 +1,763 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Диплом_КатяModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Soderzhanie">
+          <Key>
+            <PropertyRef Name="Id_Soderzhanie" />
+          </Key>
+          <Property Name="Id_Soderzhanie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Text" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Номер_ученика" Type="nchar" MaxLength="20" />
+          <Property Name="Номер_родителей" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Виды_Контроля">
+          <Key>
+            <PropertyRef Name="Id_темы" />
+          </Key>
+          <Property Name="Id_темы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="КоличествоВопросов" Type="int" />
+        </EntityType>
+        <EntityType Name="Вопросы">
+          <Key>
+            <PropertyRef Name="ID_вопроса" />
+          </Key>
+          <Property Name="ID_вопроса" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_теста" Type="int" Nullable="false" />
+          <Property Name="Вопрос" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id_модуля" Type="int" />
+        </EntityType>
+        <EntityType Name="Даты">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Описание" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_модули" Type="int" />
+        </EntityType>
+        <EntityType Name="Дневник_Учителя">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Дата" Type="date" Nullable="false" />
+          <Property Name="Событие" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Модули">
+          <Key>
+            <PropertyRef Name="ID_модуля" />
+          </Key>
+          <Property Name="ID_модуля" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ответы">
+          <Key>
+            <PropertyRef Name="Id_Ответа" />
+          </Key>
+          <Property Name="Id_Ответа" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_вопроса" Type="int" Nullable="false" />
+          <Property Name="Ответ" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_верных_ответов" Type="int" />
+          <Property Name="id_модуля" Type="int" />
+        </EntityType>
+        <EntityType Name="Правильные/неправильные_ответы">
+          <Key>
+            <PropertyRef Name="Id_ответа" />
+          </Key>
+          <Property Name="Id_ответа" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="РезультатыТеста">
+          <Key>
+            <PropertyRef Name="ID_тестирования" />
+          </Key>
+          <Property Name="ID_тестирования" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Ученика" Type="int" Nullable="false" />
+          <Property Name="id_темы" Type="int" Nullable="false" />
+          <Property Name="КоличествоНеверных" Type="int" />
+          <Property Name="КоличествоВсехВопросов" Type="int" />
+          <Property Name="Дата" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Термины">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Описание" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ID_Модуля" Type="int" />
+        </EntityType>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Вопросы_Модули">
+          <End Role="Модули" Type="Self.Модули" Multiplicity="0..1" />
+          <End Role="Вопросы" Type="Self.Вопросы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модули">
+              <PropertyRef Name="ID_модуля" />
+            </Principal>
+            <Dependent Role="Вопросы">
+              <PropertyRef Name="Id_модуля" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Вопросы_Темы_тестов">
+          <End Role="Виды_Контроля" Type="Self.Виды_Контроля" Multiplicity="1" />
+          <End Role="Вопросы" Type="Self.Вопросы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Виды_Контроля">
+              <PropertyRef Name="Id_темы" />
+            </Principal>
+            <Dependent Role="Вопросы">
+              <PropertyRef Name="id_теста" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Основные даты_Модули">
+          <End Role="Модули" Type="Self.Модули" Multiplicity="0..1" />
+          <End Role="Даты" Type="Self.Даты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модули">
+              <PropertyRef Name="ID_модуля" />
+            </Principal>
+            <Dependent Role="Даты">
+              <PropertyRef Name="id_модули" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ответы_Вопросы2">
+          <End Role="Вопросы" Type="Self.Вопросы" Multiplicity="1" />
+          <End Role="Ответы" Type="Self.Ответы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Вопросы">
+              <PropertyRef Name="ID_вопроса" />
+            </Principal>
+            <Dependent Role="Ответы">
+              <PropertyRef Name="id_вопроса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ответы_Модули">
+          <End Role="Модули" Type="Self.Модули" Multiplicity="0..1" />
+          <End Role="Ответы" Type="Self.Ответы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модули">
+              <PropertyRef Name="ID_модуля" />
+            </Principal>
+            <Dependent Role="Ответы">
+              <PropertyRef Name="id_модуля" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ответы_Правильные/неправильные_ответы">
+          <End Role="Правильные/неправильные_ответы" Type="Self.Правильные/неправильные_ответы" Multiplicity="0..1" />
+          <End Role="Ответы" Type="Self.Ответы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Правильные/неправильные_ответы">
+              <PropertyRef Name="Id_ответа" />
+            </Principal>
+            <Dependent Role="Ответы">
+              <PropertyRef Name="id_верных_ответов" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_РезультатыТеста_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="РезультатыТеста" Type="Self.РезультатыТеста" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="РезультатыТеста">
+              <PropertyRef Name="Id_Ученика" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_РезультатыТеста_Темы_тестов">
+          <End Role="Виды_Контроля" Type="Self.Виды_Контроля" Multiplicity="1" />
+          <End Role="РезультатыТеста" Type="Self.РезультатыТеста" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Виды_Контроля">
+              <PropertyRef Name="Id_темы" />
+            </Principal>
+            <Dependent Role="РезультатыТеста">
+              <PropertyRef Name="id_темы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Термины_Модули">
+          <End Role="Модули" Type="Self.Модули" Multiplicity="0..1" />
+          <End Role="Термины" Type="Self.Термины" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модули">
+              <PropertyRef Name="ID_модуля" />
+            </Principal>
+            <Dependent Role="Термины">
+              <PropertyRef Name="ID_Модуля" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Диплом_КатяModelContainer">
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Soderzhanie" EntityType="Self.Soderzhanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Виды_Контроля" EntityType="Self.Виды_Контроля" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Вопросы" EntityType="Self.Вопросы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Даты" EntityType="Self.Даты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Дневник_Учителя" EntityType="Self.Дневник_Учителя" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Модули" EntityType="Self.Модули" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ответы" EntityType="Self.Ответы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Правильные/неправильные_ответы" EntityType="Self.Правильные/неправильные_ответы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="РезультатыТеста" EntityType="Self.РезультатыТеста" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Термины" EntityType="Self.Термины" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Вопросы_Модули" Association="Self.FK_Вопросы_Модули">
+            <End Role="Модули" EntitySet="Модули" />
+            <End Role="Вопросы" EntitySet="Вопросы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Вопросы_Темы_тестов" Association="Self.FK_Вопросы_Темы_тестов">
+            <End Role="Виды_Контроля" EntitySet="Виды_Контроля" />
+            <End Role="Вопросы" EntitySet="Вопросы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Основные даты_Модули" Association="Self.FK_Основные даты_Модули">
+            <End Role="Модули" EntitySet="Модули" />
+            <End Role="Даты" EntitySet="Даты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ответы_Вопросы2" Association="Self.FK_Ответы_Вопросы2">
+            <End Role="Вопросы" EntitySet="Вопросы" />
+            <End Role="Ответы" EntitySet="Ответы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ответы_Модули" Association="Self.FK_Ответы_Модули">
+            <End Role="Модули" EntitySet="Модули" />
+            <End Role="Ответы" EntitySet="Ответы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ответы_Правильные/неправильные_ответы" Association="Self.FK_Ответы_Правильные/неправильные_ответы">
+            <End Role="Правильные/неправильные_ответы" EntitySet="Правильные/неправильные_ответы" />
+            <End Role="Ответы" EntitySet="Ответы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_РезультатыТеста_User" Association="Self.FK_РезультатыТеста_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="РезультатыТеста" EntitySet="РезультатыТеста" />
+          </AssociationSet>
+          <AssociationSet Name="FK_РезультатыТеста_Темы_тестов" Association="Self.FK_РезультатыТеста_Темы_тестов">
+            <End Role="Виды_Контроля" EntitySet="Виды_Контроля" />
+            <End Role="РезультатыТеста" EntitySet="РезультатыТеста" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Термины_Модули" Association="Self.FK_Термины_Модули">
+            <End Role="Модули" EntitySet="Модули" />
+            <End Role="Термины" EntitySet="Термины" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Диплом_КатяModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Диплом_Катя1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Role" EntityType="Диплом_КатяModel.Role" />
+          <EntitySet Name="Soderzhanie" EntityType="Диплом_КатяModel.Soderzhanie" />
+          <EntitySet Name="sysdiagrams" EntityType="Диплом_КатяModel.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Диплом_КатяModel.User" />
+          <EntitySet Name="Виды_Контроля" EntityType="Диплом_КатяModel.Виды_Контроля" />
+          <EntitySet Name="Вопросы" EntityType="Диплом_КатяModel.Вопросы" />
+          <EntitySet Name="Даты" EntityType="Диплом_КатяModel.Даты" />
+          <EntitySet Name="Дневник_Учителя" EntityType="Диплом_КатяModel.Дневник_Учителя" />
+          <EntitySet Name="Модули" EntityType="Диплом_КатяModel.Модули" />
+          <EntitySet Name="Ответы" EntityType="Диплом_КатяModel.Ответы" />
+          <EntitySet Name="Правильные_неправильные_ответы" EntityType="Диплом_КатяModel.Правильные_неправильные_ответы" />
+          <EntitySet Name="РезультатыТеста" EntityType="Диплом_КатяModel.РезультатыТеста" />
+          <EntitySet Name="Термины" EntityType="Диплом_КатяModel.Термины" />
+          <AssociationSet Name="FK_User_Role" Association="Диплом_КатяModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_РезультатыТеста_User" Association="Диплом_КатяModel.FK_РезультатыТеста_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="РезультатыТеста" EntitySet="РезультатыТеста" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Вопросы_Темы_тестов" Association="Диплом_КатяModel.FK_Вопросы_Темы_тестов">
+            <End Role="Виды_Контроля" EntitySet="Виды_Контроля" />
+            <End Role="Вопросы" EntitySet="Вопросы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_РезультатыТеста_Темы_тестов" Association="Диплом_КатяModel.FK_РезультатыТеста_Темы_тестов">
+            <End Role="Виды_Контроля" EntitySet="Виды_Контроля" />
+            <End Role="РезультатыТеста" EntitySet="РезультатыТеста" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Вопросы_Модули" Association="Диплом_КатяModel.FK_Вопросы_Модули">
+            <End Role="Модули" EntitySet="Модули" />
+            <End Role="Вопросы" EntitySet="Вопросы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ответы_Вопросы2" Association="Диплом_КатяModel.FK_Ответы_Вопросы2">
+            <End Role="Вопросы" EntitySet="Вопросы" />
+            <End Role="Ответы" EntitySet="Ответы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Основные_даты_Модули" Association="Диплом_КатяModel.FK_Основные_даты_Модули">
+            <End Role="Модули" EntitySet="Модули" />
+            <End Role="Даты" EntitySet="Даты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ответы_Модули" Association="Диплом_КатяModel.FK_Ответы_Модули">
+            <End Role="Модули" EntitySet="Модули" />
+            <End Role="Ответы" EntitySet="Ответы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Термины_Модули" Association="Диплом_КатяModel.FK_Термины_Модули">
+            <End Role="Модули" EntitySet="Модули" />
+            <End Role="Термины" EntitySet="Термины" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ответы_Правильные_неправильные_ответы" Association="Диплом_КатяModel.FK_Ответы_Правильные_неправильные_ответы">
+            <End Role="Правильные_неправильные_ответы" EntitySet="Правильные_неправильные_ответы" />
+            <End Role="Ответы" EntitySet="Ответы" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Диплом_КатяModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Soderzhanie">
+          <Key>
+            <PropertyRef Name="Id_Soderzhanie" />
+          </Key>
+          <Property Name="Id_Soderzhanie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_ученика" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Номер_родителей" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Диплом_КатяModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="РезультатыТеста" Relationship="Диплом_КатяModel.FK_РезультатыТеста_User" FromRole="User" ToRole="РезультатыТеста" />
+        </EntityType>
+        <EntityType Name="Виды_Контроля">
+          <Key>
+            <PropertyRef Name="Id_темы" />
+          </Key>
+          <Property Name="Id_темы" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="КоличествоВопросов" Type="Int32" />
+          <NavigationProperty Name="Вопросы" Relationship="Диплом_КатяModel.FK_Вопросы_Темы_тестов" FromRole="Виды_Контроля" ToRole="Вопросы" />
+          <NavigationProperty Name="РезультатыТеста" Relationship="Диплом_КатяModel.FK_РезультатыТеста_Темы_тестов" FromRole="Виды_Контроля" ToRole="РезультатыТеста" />
+        </EntityType>
+        <EntityType Name="Вопросы">
+          <Key>
+            <PropertyRef Name="ID_вопроса" />
+          </Key>
+          <Property Name="ID_вопроса" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_теста" Type="Int32" Nullable="false" />
+          <Property Name="Вопрос" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_модуля" Type="Int32" />
+          <NavigationProperty Name="Виды_Контроля" Relationship="Диплом_КатяModel.FK_Вопросы_Темы_тестов" FromRole="Вопросы" ToRole="Виды_Контроля" />
+          <NavigationProperty Name="Модули" Relationship="Диплом_КатяModel.FK_Вопросы_Модули" FromRole="Вопросы" ToRole="Модули" />
+          <NavigationProperty Name="Ответы" Relationship="Диплом_КатяModel.FK_Ответы_Вопросы2" FromRole="Вопросы" ToRole="Ответы" />
+        </EntityType>
+        <EntityType Name="Даты">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Описание" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_модули" Type="Int32" />
+          <NavigationProperty Name="Модули" Relationship="Диплом_КатяModel.FK_Основные_даты_Модули" FromRole="Даты" ToRole="Модули" />
+        </EntityType>
+        <EntityType Name="Дневник_Учителя">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Дата" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Событие" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Модули">
+          <Key>
+            <PropertyRef Name="ID_модуля" />
+          </Key>
+          <Property Name="ID_модуля" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Вопросы" Relationship="Диплом_КатяModel.FK_Вопросы_Модули" FromRole="Модули" ToRole="Вопросы" />
+          <NavigationProperty Name="Даты" Relationship="Диплом_КатяModel.FK_Основные_даты_Модули" FromRole="Модули" ToRole="Даты" />
+          <NavigationProperty Name="Ответы" Relationship="Диплом_КатяModel.FK_Ответы_Модули" FromRole="Модули" ToRole="Ответы" />
+          <NavigationProperty Name="Термины" Relationship="Диплом_КатяModel.FK_Термины_Модули" FromRole="Модули" ToRole="Термины" />
+        </EntityType>
+        <EntityType Name="Ответы">
+          <Key>
+            <PropertyRef Name="Id_Ответа" />
+          </Key>
+          <Property Name="Id_Ответа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_вопроса" Type="Int32" Nullable="false" />
+          <Property Name="Ответ" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_верных_ответов" Type="Int32" />
+          <Property Name="id_модуля" Type="Int32" />
+          <NavigationProperty Name="Вопросы" Relationship="Диплом_КатяModel.FK_Ответы_Вопросы2" FromRole="Ответы" ToRole="Вопросы" />
+          <NavigationProperty Name="Модули" Relationship="Диплом_КатяModel.FK_Ответы_Модули" FromRole="Ответы" ToRole="Модули" />
+          <NavigationProperty Name="Правильные_неправильные_ответы" Relationship="Диплом_КатяModel.FK_Ответы_Правильные_неправильные_ответы" FromRole="Ответы" ToRole="Правильные_неправильные_ответы" />
+        </EntityType>
+        <EntityType Name="Правильные_неправильные_ответы">
+          <Key>
+            <PropertyRef Name="Id_ответа" />
+          </Key>
+          <Property Name="Id_ответа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Ответы" Relationship="Диплом_КатяModel.FK_Ответы_Правильные_неправильные_ответы" FromRole="Правильные_неправильные_ответы" ToRole="Ответы" />
+        </EntityType>
+        <EntityType Name="РезультатыТеста">
+          <Key>
+            <PropertyRef Name="ID_тестирования" />
+          </Key>
+          <Property Name="ID_тестирования" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Ученика" Type="Int32" Nullable="false" />
+          <Property Name="id_темы" Type="Int32" Nullable="false" />
+          <Property Name="КоличествоНеверных" Type="Int32" />
+          <Property Name="КоличествоВсехВопросов" Type="Int32" />
+          <Property Name="Дата" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="Диплом_КатяModel.FK_РезультатыТеста_User" FromRole="РезультатыТеста" ToRole="User" />
+          <NavigationProperty Name="Виды_Контроля" Relationship="Диплом_КатяModel.FK_РезультатыТеста_Темы_тестов" FromRole="РезультатыТеста" ToRole="Виды_Контроля" />
+        </EntityType>
+        <EntityType Name="Термины">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Описание" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Модуля" Type="Int32" />
+          <NavigationProperty Name="Модули" Relationship="Диплом_КатяModel.FK_Термины_Модули" FromRole="Термины" ToRole="Модули" />
+        </EntityType>
+        <Association Name="FK_User_Role">
+          <End Type="Диплом_КатяModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="Диплом_КатяModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_РезультатыТеста_User">
+          <End Type="Диплом_КатяModel.User" Role="User" Multiplicity="1" />
+          <End Type="Диплом_КатяModel.РезультатыТеста" Role="РезультатыТеста" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="РезультатыТеста">
+              <PropertyRef Name="Id_Ученика" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Вопросы_Темы_тестов">
+          <End Type="Диплом_КатяModel.Виды_Контроля" Role="Виды_Контроля" Multiplicity="1" />
+          <End Type="Диплом_КатяModel.Вопросы" Role="Вопросы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Виды_Контроля">
+              <PropertyRef Name="Id_темы" />
+            </Principal>
+            <Dependent Role="Вопросы">
+              <PropertyRef Name="id_теста" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_РезультатыТеста_Темы_тестов">
+          <End Type="Диплом_КатяModel.Виды_Контроля" Role="Виды_Контроля" Multiplicity="1" />
+          <End Type="Диплом_КатяModel.РезультатыТеста" Role="РезультатыТеста" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Виды_Контроля">
+              <PropertyRef Name="Id_темы" />
+            </Principal>
+            <Dependent Role="РезультатыТеста">
+              <PropertyRef Name="id_темы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Вопросы_Модули">
+          <End Type="Диплом_КатяModel.Модули" Role="Модули" Multiplicity="0..1" />
+          <End Type="Диплом_КатяModel.Вопросы" Role="Вопросы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модули">
+              <PropertyRef Name="ID_модуля" />
+            </Principal>
+            <Dependent Role="Вопросы">
+              <PropertyRef Name="Id_модуля" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ответы_Вопросы2">
+          <End Type="Диплом_КатяModel.Вопросы" Role="Вопросы" Multiplicity="1" />
+          <End Type="Диплом_КатяModel.Ответы" Role="Ответы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Вопросы">
+              <PropertyRef Name="ID_вопроса" />
+            </Principal>
+            <Dependent Role="Ответы">
+              <PropertyRef Name="id_вопроса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Основные_даты_Модули">
+          <End Type="Диплом_КатяModel.Модули" Role="Модули" Multiplicity="0..1" />
+          <End Type="Диплом_КатяModel.Даты" Role="Даты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модули">
+              <PropertyRef Name="ID_модуля" />
+            </Principal>
+            <Dependent Role="Даты">
+              <PropertyRef Name="id_модули" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ответы_Модули">
+          <End Type="Диплом_КатяModel.Модули" Role="Модули" Multiplicity="0..1" />
+          <End Type="Диплом_КатяModel.Ответы" Role="Ответы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модули">
+              <PropertyRef Name="ID_модуля" />
+            </Principal>
+            <Dependent Role="Ответы">
+              <PropertyRef Name="id_модуля" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Термины_Модули">
+          <End Type="Диплом_КатяModel.Модули" Role="Модули" Multiplicity="0..1" />
+          <End Type="Диплом_КатяModel.Термины" Role="Термины" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модули">
+              <PropertyRef Name="ID_модуля" />
+            </Principal>
+            <Dependent Role="Термины">
+              <PropertyRef Name="ID_Модуля" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ответы_Правильные_неправильные_ответы">
+          <End Type="Диплом_КатяModel.Правильные_неправильные_ответы" Role="Правильные_неправильные_ответы" Multiplicity="0..1" />
+          <End Type="Диплом_КатяModel.Ответы" Role="Ответы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Правильные_неправильные_ответы">
+              <PropertyRef Name="Id_ответа" />
+            </Principal>
+            <Dependent Role="Ответы">
+              <PropertyRef Name="id_верных_ответов" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Диплом_КатяModelContainer" CdmEntityContainer="Диплом_Катя1">
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Soderzhanie">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Soderzhanie">
+              <MappingFragment StoreEntitySet="Soderzhanie">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_Soderzhanie" ColumnName="Id_Soderzhanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Номер_родителей" ColumnName="Номер_родителей" />
+                <ScalarProperty Name="Номер_ученика" ColumnName="Номер_ученика" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Виды_Контроля">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Виды_Контроля">
+              <MappingFragment StoreEntitySet="Виды_Контроля">
+                <ScalarProperty Name="КоличествоВопросов" ColumnName="КоличествоВопросов" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+                <ScalarProperty Name="Id_темы" ColumnName="Id_темы" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Вопросы">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Вопросы">
+              <MappingFragment StoreEntitySet="Вопросы">
+                <ScalarProperty Name="Id_модуля" ColumnName="Id_модуля" />
+                <ScalarProperty Name="Вопрос" ColumnName="Вопрос" />
+                <ScalarProperty Name="id_теста" ColumnName="id_теста" />
+                <ScalarProperty Name="ID_вопроса" ColumnName="ID_вопроса" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Даты">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Даты">
+              <MappingFragment StoreEntitySet="Даты">
+                <ScalarProperty Name="id_модули" ColumnName="id_модули" />
+                <ScalarProperty Name="Описание" ColumnName="Описание" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Дневник_Учителя">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Дневник_Учителя">
+              <MappingFragment StoreEntitySet="Дневник_Учителя">
+                <ScalarProperty Name="Событие" ColumnName="Событие" />
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Модули">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Модули">
+              <MappingFragment StoreEntitySet="Модули">
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+                <ScalarProperty Name="ID_модуля" ColumnName="ID_модуля" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ответы">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Ответы">
+              <MappingFragment StoreEntitySet="Ответы">
+                <ScalarProperty Name="id_модуля" ColumnName="id_модуля" />
+                <ScalarProperty Name="id_верных_ответов" ColumnName="id_верных_ответов" />
+                <ScalarProperty Name="Ответ" ColumnName="Ответ" />
+                <ScalarProperty Name="id_вопроса" ColumnName="id_вопроса" />
+                <ScalarProperty Name="Id_Ответа" ColumnName="Id_Ответа" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Правильные_неправильные_ответы">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Правильные_неправильные_ответы">
+              <MappingFragment StoreEntitySet="Правильные/неправильные_ответы">
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+                <ScalarProperty Name="Id_ответа" ColumnName="Id_ответа" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="РезультатыТеста">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.РезультатыТеста">
+              <MappingFragment StoreEntitySet="РезультатыТеста">
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
+                <ScalarProperty Name="КоличествоВсехВопросов" ColumnName="КоличествоВсехВопросов" />
+                <ScalarProperty Name="КоличествоНеверных" ColumnName="КоличествоНеверных" />
+                <ScalarProperty Name="id_темы" ColumnName="id_темы" />
+                <ScalarProperty Name="Id_Ученика" ColumnName="Id_Ученика" />
+                <ScalarProperty Name="ID_тестирования" ColumnName="ID_тестирования" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Термины">
+            <EntityTypeMapping TypeName="Диплом_КатяModel.Термины">
+              <MappingFragment StoreEntitySet="Термины">
+                <ScalarProperty Name="ID_Модуля" ColumnName="ID_Модуля" />
+                <ScalarProperty Name="Описание" ColumnName="Описание" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

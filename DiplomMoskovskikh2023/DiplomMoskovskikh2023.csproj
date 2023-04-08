@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7A78500-8672-4D38-9144-4AA63FE85752}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DiplomMoskovskikh2023</RootNamespace>
+    <AssemblyName>DiplomMoskovskikh2023</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GemBox.Document, Version=35.0.0.1300, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
+      <HintPath>..\packages\GemBox.Document.35.0.1300\lib\net35\GemBox.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ApplicationData\AppConnect.cs" />
+    <Compile Include="ApplicationData\AppFrame.cs" />
+    <Compile Include="ApplicationData\ClassAddEdit.cs" />
+    <Compile Include="ApplicationData\HelpClass.cs" />
+    <Compile Include="ApplicationData\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Soderzhanie.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Виды_Контроля.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Вопросы.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Даты.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Дневник_Учителя.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Модули.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Ответы.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Правильные_неправильные_ответы.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\РезультатыТеста.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\Термины.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="student\kart1.xaml.cs">
+      <DependentUpon>kart1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\lichnosti.xaml.cs">
+      <DependentUpon>lichnosti.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\MenuStudentaPage.xaml.cs">
+      <DependentUpon>MenuStudentaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\MostPage.xaml.cs">
+      <DependentUpon>MostPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\PageContent.xaml.cs">
+      <DependentUpon>PageContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Razvetvl.xaml.cs">
+      <DependentUpon>Razvetvl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Ryrikovich.xaml.cs">
+      <DependentUpon>Ryrikovich.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Zadaniya.xaml.cs">
+      <DependentUpon>Zadaniya.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Тестирование\AvtorizaciaVhodnoe.xaml.cs">
+      <DependentUpon>AvtorizaciaVhodnoe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Тестирование\Avtorizaciya.xaml.cs">
+      <DependentUpon>Avtorizaciya.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Тестирование\ItgTest.xaml.cs">
+      <DependentUpon>ItgTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Тестирование\Itogov_test.xaml.cs">
+      <DependentUpon>Itogov_test.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Тестирование\PageRezItogovTest.xaml.cs">
+      <DependentUpon>PageRezItogovTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Тестирование\RezVhodTest.xaml.cs">
+      <DependentUpon>RezVhodTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="student\Тестирование\vhodtest.xaml.cs">
+      <DependentUpon>vhodtest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\AddDnenik.xaml.cs">
+      <DependentUpon>AddDnenik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\AddStudent.xaml.cs">
+      <DependentUpon>AddStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\Avtorizacia.xaml.cs">
+      <DependentUpon>Avtorizacia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\Dnevnik.xaml.cs">
+      <DependentUpon>Dnevnik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\MenuTeacher.xaml.cs">
+      <DependentUpon>MenuTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\RedactorRez.xaml.cs">
+      <DependentUpon>RedactorRez.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\RedSoderzh.xaml.cs">
+      <DependentUpon>RedSoderzh.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\Rezylt.xaml.cs">
+      <DependentUpon>Rezylt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\soderzh.xaml.cs">
+      <DependentUpon>soderzh.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\Student.xaml.cs">
+      <DependentUpon>Student.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\Testirovanie\AddVopros.xaml.cs">
+      <DependentUpon>AddVopros.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\Testirovanie\ItogovoeTest.xaml.cs">
+      <DependentUpon>ItogovoeTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\Testirovanie\Otvets.xaml.cs">
+      <DependentUpon>Otvets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\VhodnoeTestir.xaml.cs">
+      <DependentUpon>VhodnoeTestir.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacher\VoprosOtvet.xaml.cs">
+      <DependentUpon>VoprosOtvet.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PageGlavnaya.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\kart1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\lichnosti.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\MenuStudentaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\MostPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\PageContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Razvetvl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Ryrikovich.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Zadaniya.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Тестирование\AvtorizaciaVhodnoe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Тестирование\Avtorizaciya.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Тестирование\ItgTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Тестирование\Itogov_test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Тестирование\PageRezItogovTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Тестирование\RezVhodTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="student\Тестирование\vhodtest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\AddDnenik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\AddStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\Avtorizacia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\Dnevnik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\MenuTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\RedactorRez.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\RedSoderzh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\Rezylt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\soderzh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\Student.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\Testirovanie\AddVopros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\Testirovanie\ItogovoeTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\Testirovanie\Otvets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\VhodnoeTestir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacher\VoprosOtvet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PageGlavnaya.xaml.cs">
+      <DependentUpon>PageGlavnaya.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="ApplicationData\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ApplicationData\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="Docx\karty_1 %281%29.doc" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\fon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\knopka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\fonmost.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\PAPIRUS.png" />
+    <Resource Include="resources\LOGO.png" />
+    <Resource Include="resources\GOTOVO_1.png" />
+    <Resource Include="resources\ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Печать.png" />
+    <Resource Include="resources\Редактирование.png" />
+    <Resource Include="resources\Удаление1.png" />
+    <Resource Include="resources\добавление.png" />
+    <Resource Include="resources\тест1.png" />
+    <Resource Include="resources\Студент.png" />
+    <Resource Include="resources\тест.png" />
+    <Resource Include="resources\Содержание.png" />
+    <Resource Include="resources\меню учителя.jpg" />
+    <Resource Include="resources\откртый.png" />
+    <Resource Include="resources\закрытый.png" />
+    <Resource Include="resources\iJVJYlXhkq41.jpg" />
+    <Resource Include="resources\Двери.png" />
+    <Resource Include="resources\kniga.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Фон_тест.jpg" />
+    <Resource Include="resources\YOObFnRp3_Q.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationData\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ApplicationData\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Resource Include="resources\free-icon-test-4345398.png" />
+    <Resource Include="resources\free-icon-undo-8384544 %281%29.png" />
+    <Resource Include="resources\Настройки.png" />
+    <Resource Include="resources\excel.png" />
+    <Resource Include="resources\Результаты.png" />
+    <Resource Include="resources\Добавитьдн.png" />
+    <Resource Include="resources\Назад1.png" />
+    <Resource Include="resources\записаная книжка.png" />
+    <Resource Include="resources\undo.png" />
+    <Resource Include="resources\answe.png" />
+    <Resource Include="resources\плюс.png" />
+    <Resource Include="resources\printerTest.png" />
+    <Resource Include="resources\editTest.png" />
+    <Resource Include="resources\Для тестирования.png" />
+    <Resource Include="resources\Итоговый тест 4 задание.PNG" />
+    <Resource Include="resources\Книги.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

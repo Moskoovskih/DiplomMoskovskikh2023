@@ -1,0 +1,25 @@
+﻿<Page x:Class="DiplomMoskovskikh2023.student.Тестирование.PageRezItogovTest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DiplomMoskovskikh2023.student.Тестирование"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="" Background="#FFCCD1D3">
+
+    <StackPanel Background="#FF8C4F91"  HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Label Content="Время:"  Foreground="White" Width="100"  FontSize="25" FontWeight="Bold"  />
+            <TextBlock Name="text1" HorizontalAlignment="Center" FontSize="25"  Foreground="White" FontWeight="Bold" VerticalAlignment="Center" TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Label Content="Ошибки:" Foreground="White"  Width="120" FontWeight="Bold" FontSize="25" />
+            <TextBlock Name="text2" HorizontalAlignment="Center" FontSize="25"  Foreground="White" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center"  />
+        </StackPanel>
+        <Button  Background="#FFF3D39D" FontSize="25" x:Name="Vbd" Content="Завершить" FontWeight="Bold"  Margin="10"  Click="Vbd_Click" Width="172"/>
+
+
+    </StackPanel>
+</Page>

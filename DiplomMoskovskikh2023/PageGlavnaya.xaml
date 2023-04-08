@@ -1,0 +1,35 @@
+﻿<Page x:Class="DiplomMoskovskikh2023.PageGlavnaya"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DiplomMoskovskikh2023"
+      mc:Ignorable="d"
+       d:DesignHeight="450" d:DesignWidth="800"
+      Title="" >
+
+    <Grid Background="#FF0F132C" >
+
+        <Image Source="/resources/GOTOVO_1.png"  />
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="student" Height="93" Width="95"  Margin="0 200 380 0 "  BorderBrush="Transparent" Background="Transparent"  Click="student_Click" >
+               
+                <StackPanel Orientation="Vertical" Height="104" Width="99" Margin="5 0 0 0">
+                    <Image Source="/resources/PAPIRUS.png" Height="75" Margin="10,0,10.2,-4"/>
+                    <TextBlock Text="УЧЕНИК" FontStretch="ExtraCondensed" FontWeight="Bold" FontSize="16" Foreground="White" VerticalAlignment="Center" Margin="20 0 0 0 " Height="27"  />
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="teacher"  Height="99" Width="95"  Margin="370 50 0 0 "   BorderBrush="Transparent" Background="Transparent" Click="teacher_Click">
+                <StackPanel Orientation="Vertical" Height="104" Width="99">
+                    <Image Source="/resources/PAPIRUS.png" Height="75" Margin="-17,2,17,0"/>
+                    <TextBlock Text="УЧИТЕЛЬ" FontWeight="Bold" FontSize="16" FontStretch="ExtraCondensed"   VerticalAlignment="Center" Margin="0,0,18.2,0" Foreground="White" Height="24"  />
+                </StackPanel>
+            </Button>
+           
+
+        </StackPanel>
+    </Grid>
+</Page>
